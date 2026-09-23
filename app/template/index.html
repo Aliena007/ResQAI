@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ResQAI | Response coordination</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ResQAI home"><span class="brand-mark">R</span><span>ResQAI</span></a>
+      <div class="topbar-meta"><span class="live-dot"></span><span>Response network online</span></div>
+    </header>
+
+    <section id="auth-view" class="auth-layout">
+      <div class="intro-panel">
+        <p class="eyebrow">DISASTER PREVENTION / WEATHER INTELLIGENCE</p>
+        <h1>See risk before it becomes a disaster.</h1>
+        <p class="intro-copy">Give the ResQAI weather agent a geographical location. It studies the upcoming forecast, identifies dangerous conditions, and recommends preparedness actions.</p>
+        <div class="principles"><span>01 / Locate</span><span>02 / Predict</span><span>03 / Prepare</span></div>
+      </div>
+      <div class="auth-card">
+        <div class="tabs" role="tablist"><button class="tab active" data-auth="login" type="button">Sign in</button><button class="tab" data-auth="register" type="button">Create account</button></div>
+        <form id="login-form" class="auth-form">
+          <h2>Welcome back</h2><p class="muted">Access the live incident desk.</p>
+          <label>Username or email<input name="username" required autocomplete="username"></label>
+          <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+          <button class="primary-button" type="submit">Open response desk <span>-></span></button>
+        </form>
+        <form id="register-form" class="auth-form hidden">
+          <h2>Join the desk</h2><p class="muted">Create a local account for your response team.</p>
+          <label>Username<input name="username" required minlength="3" maxlength="50" autocomplete="username"></label>
+          <label>Email<input name="email" type="email" required autocomplete="email"></label>
+          <label>Password<input name="password" type="password" required minlength="8" autocomplete="new-password"></label>
+          <button class="primary-button" type="submit">Create account <span>-></span></button>
+        </form>
+        <p id="auth-message" class="form-message" role="alert"></p>
+      </div>
+    </section>
+
+    <section id="desk-view" class="desk hidden">
+      <div class="desk-heading"><div><p class="eyebrow">PREVENTIVE AI AGENT</p><h1>Weather risk center</h1><p class="muted">Ask what is coming before you coordinate a response.</p></div><button id="logout-button" class="quiet-button" type="button">Sign out</button></div>
+      <section class="weather-agent panel"><div class="panel-heading"><div><p class="eyebrow">AI AGENT / 01</p><h2>Predict weather risk by location</h2><p class="muted">Free Open-Meteo forecast model. No paid API key required.</p></div><span class="agent-pulse">● AGENT READY</span></div><form id="weather-form" class="weather-form"><label>Geographical location<input name="location" required placeholder="City, region, or landmark" value="Mumbai"></label><button class="primary-button" type="submit">Run preventive analysis <span>-></span></button></form><p id="weather-message" class="form-message" role="alert"></p><div id="weather-result" class="weather-result hidden"></div></section>
+    </section>
+    <footer><span>ResQAI / free local-first response tooling</span><a href="/health">System health</a></footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
